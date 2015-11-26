@@ -1,0 +1,4 @@
+[submodule "Wireless"]
+	path = Wireless
+	url = https://github.com/MicroP-Dead-Reckoning/Wireless.git
+	branch = wireless-src
