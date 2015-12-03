@@ -66,9 +66,6 @@ int main (void) {
 	CC2500_SPI_INIT();
 	osDelay(250);
 	
-
-	
-	
 	
 	
 	recv_data_thread = osThreadCreate(osThread(recv_data), NULL);

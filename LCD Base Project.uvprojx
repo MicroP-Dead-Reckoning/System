@@ -432,25 +432,15 @@
               <FileType>1</FileType>
               <FilePath>.\src\fputc_debug.c</FilePath>
             </File>
-            <File>
-              <FileName>cc2500.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Wireless\src\cc2500.c</FilePath>
-            </File>
-            <File>
-              <FileName>cc2500.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Wireless\inc\cc2500.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Images</GroupName>
           <Files>
             <File>
-              <FileName>background16bpp.h</FileName>
+              <FileName>Image.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\inc\background16bpp.h</FilePath>
+              <FilePath>.\src\Image.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -466,6 +456,18 @@
         </Group>
         <Group>
           <GroupName>Wireless Drivers</GroupName>
+          <Files>
+            <File>
+              <FileName>cc2500.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Wireless\inc\cc2500.h</FilePath>
+            </File>
+            <File>
+              <FileName>cc2500.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Wireless\src\cc2500.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Tests</GroupName>
