@@ -19,6 +19,13 @@
 
 #include <cmsis_os.h>              // CMSIS RTOS header file
 
+typedef enum SIGNALS{
+	SIGNAL_DATA_READY = 0x0001,
+}SIGNALS;
+
+extern osThreadId recv_data_thread;
+
+
 
 // global 'thread' functions ---------------------------------------------------
 /* 

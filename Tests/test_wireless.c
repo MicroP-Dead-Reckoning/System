@@ -15,18 +15,18 @@ void test_wireless(void){
 	
 }	
 
-uint8_t recv_buffer[20];
-uint8_t num;
-int TEST_VALUE = 0;
-void EXTI4_IRQHandler() {
-	int i;
-	if (EXTI_GetITStatus(CC2500_SPI_INT1_EXTI_LINE) != RESET){
-		CC2500_Read_SR(&num, 0x3B);
-		CC2500_Read_RX(recv_buffer, num);
-		for(i = 0; i < num; i++){
-			printf("%d, ", recv_buffer[i]);
-		}
-		printf("\n");
-		EXTI_ClearITPendingBit(CC2500_SPI_INT1_EXTI_LINE);
-	}
-}
+//uint8_t recv_buffer[20];
+//uint8_t num;
+//int TEST_VALUE = 0;
+//void EXTI4_IRQHandler() {
+//	int i;
+//	if (EXTI_GetITStatus(CC2500_SPI_INT1_EXTI_LINE) != RESET){
+//		CC2500_Read_SR(&num, 0x3B);
+//		CC2500_Read_RX(recv_buffer, num);
+//		for(i = 0; i < num; i++){
+//			printf("%d, ", recv_buffer[i]);
+//		}
+//		printf("\n");
+//		EXTI_ClearITPendingBit(CC2500_SPI_INT1_EXTI_LINE);
+//	}
+//}

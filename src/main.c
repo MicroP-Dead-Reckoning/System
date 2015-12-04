@@ -5,11 +5,18 @@
 #define osObjectsPublic                     // define objects in main module
 
 #include "all_wireless_tests.h"
-#include "Image.h"
 
+#include "stm32f4xx.h"                  // Device header
+#include "stm32f4xx_conf.h"
+#include "stm32f429i_discovery.h"
+#include <stdio.h>
+#include <string.h>
+
+#include "cc2500.h"
+#include "Image.h"
 #include "stm32f429i_discovery_lcd.h"
 #include "stm32f429i_discovery_l3gd20.h"
-
+#include "recv_data.h"
 
 static void delay(__IO uint32_t nCount)
 {
@@ -19,13 +26,6 @@ static void delay(__IO uint32_t nCount)
   }
 }
 
-void recv_data(void const *argument){
-		test_control_read();
-		while(1){
-			test_wireless();
-			osDelay(100);
-		}
-}
 
 void draw_pos(void const *argument){
 	while(1){
@@ -34,12 +34,12 @@ void draw_pos(void const *argument){
 	}
 }
 
-osThreadDef(recv_data, osPriorityNormal, 1, 0);
-osThreadDef(draw_pos, osPriorityNormal, 1, 0);
+//osThreadDef(recv_data, osPriorityNormal, 1, 0);
+//osThreadDef(draw_pos, osPriorityNormal, 1, 0);
 //osThreadDef(my_example, osPriorityNormal, 1, 0);
 //// ID for theads
-osThreadId recv_data_thread;
-osThreadId draw_pos_thread;
+//osThreadId recv_data_thread;
+//osThreadId draw_pos_thread;
 //osThreadId my_example_thread;
 
 /*
@@ -65,11 +65,11 @@ int main (void) {
 	osDelay(250);
 	CC2500_SPI_INIT();
 	osDelay(250);
-	
-	
-	
-	recv_data_thread = osThreadCreate(osThread(recv_data), NULL);
-	draw_pos_thread = osThreadCreate(osThread(draw_pos), NULL);
+//	CC2500_INT_INIT();
+//	osDelay(250);
+	test_wireless();
+	//recv_data_thread = osThreadCreate(osThread(recv_data), NULL);
+	//draw_pos_thread = osThreadCreate(osThread(draw_pos), NULL);
 	//my_example_thread = osThreadCreate(osThread(my_example), NULL);
 	
 	osKernelStart ();                         // start thread execution 
