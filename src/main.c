@@ -13,6 +13,9 @@
 #include <string.h>
 #include "cc2500.h"
 
+#include "stm32f429i_discovery_lcd.h"
+#include "stm32f429i_discovery_l3gd20.h"
+
 #define FUCK_EVERYTHING 1
 const uint8_t PARTNUM = 128, VERSION = 3;
 
@@ -59,12 +62,26 @@ void transmit_data(void const *argument){
 	}
 }
 
+void display(void const *argument){
+	printf("display 1\n");
+	LCD_Init();
+	LCD_LayerInit();
+	LTDC_Cmd(ENABLE);
+	LCD_SetLayer(LCD_FOREGROUND_LAYER);
+	LCD_Clear(LCD_COLOR_WHITE);
+	printf("display 2\n");
+	LCD_DrawUniLine(100, 200, 150, 250);
+	osSignalWait(0x0001, osWaitForever);
+	while(1);
+}
+
 osThreadDef(transmit_data, osPriorityNormal, 1, 0);
-//osThreadDef(example_1b, osPriorityNormal, 1, 0);
+osThreadDef(display, osPriorityNormal, 1, 0);
 //osThreadDef(example_1c, osPriorityNormal, 1, 0);
 //osThreadDef(my_example, osPriorityNormal, 1, 0);
 //// ID for theads
 osThreadId transmit_data_thread;
+osThreadId display_thread;
 //osThreadId example_1b_thread;
 //osThreadId example_1c_thread;
 //osThreadId my_example_thread;
@@ -78,9 +95,22 @@ int main (void) {
 	osDelay(250);
 	CC2500_SPI_INIT();
 	osDelay(250);
+	//LCD_Init();
+  
+  /* LCD Layer initiatization */
+  //LCD_LayerInit();
+    
+  /* Enable the LTDC controler */
+  //LTDC_Cmd(ENABLE);
+  
+  /* Set LCD foreground layer as the current layer */
+  //LCD_SetLayer(LCD_FOREGROUND_LAYER);
+	
+	//LCD_Clear(LCD_COLOR_WHITE);
 	
 	
 	transmit_data_thread = osThreadCreate(osThread(transmit_data), NULL);
+	display_thread = osThreadCreate(osThread(display), NULL);
 	//example_1b_thread = osThreadCreate(osThread(example_1b), NULL);
 	//example_1c_thread = osThreadCreate(osThread(example_1c), NULL);
 	//my_example_thread = osThreadCreate(osThread(my_example), NULL);
