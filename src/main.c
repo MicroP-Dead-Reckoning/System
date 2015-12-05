@@ -13,12 +13,14 @@
 #include <string.h>
 #include "cc2500.h"
 
-
+#define FUCK_EVERYTHING 1
 const uint8_t PARTNUM = 128, VERSION = 3;
 
 uint8_t recv_buffer[20];
 uint8_t num;
 int TEST_VALUE = 0;
+
+
 void EXTI4_IRQHandler() {
 	int i;
 	if (EXTI_GetITStatus(CC2500_SPI_INT1_EXTI_LINE) != RESET){
@@ -43,23 +45,18 @@ void test_control_read(void) {
 
 
 void test_wireless(void){
-
-	uint8_t res2[3];
-	
-	CC2500_Read(res2, CC2500_FREQ_REG, 3);
-	printf("result = %x, %x, %x\n", res2[0], res2[1], res2[2]);
-
-	CC2500_INT_INIT();
-	for (int i=0; i<168000000/6; i++);
 	while(1);
 }	
 
 void transmit_data(void const *argument){
-		test_control_read();
-		while(1){
-			test_wireless();
-			osDelay(100);
-		}
+	test_control_read();
+	CC2500_INT_INIT();
+	uint8_t res2[3];	
+	CC2500_Read(res2, CC2500_FREQ_REG, 3);
+	printf("result = %x, %x, %x\n", res2[0], res2[1], res2[2]);
+	while(1){
+		uint8_t x = FUCK_EVERYTHING;	// doesn't work without some assignment
+	}
 }
 
 osThreadDef(transmit_data, osPriorityNormal, 1, 0);
