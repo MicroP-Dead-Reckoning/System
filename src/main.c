@@ -48,20 +48,20 @@ void draw_pos(void const *argument){
 int main (void) {
   osKernelInitialize ();                    // initialize CMSIS-RTOS
 	
-	LCD_Init();
-  
-  /* LCD Layer initiatization */
-  LCD_LayerInit();
-    
-  /* Enable the LTDC controler */
-  LTDC_Cmd(ENABLE);
-  
-  /* Set LCD foreground layer as the current layer */
-  LCD_SetLayer(LCD_FOREGROUND_LAYER);
-	
-	LCD_Clear(LCD_COLOR_WHITE);
-	memcpy ( (void *)(LCD_FRAME_BUFFER + BUFFER_OFFSET), (void *) &Image, sizeof(Image));
-		
+//	LCD_Init();
+//  
+//  /* LCD Layer initiatization */
+//  LCD_LayerInit();
+//    
+//  /* Enable the LTDC controler */
+//  LTDC_Cmd(ENABLE);
+//  
+//  /* Set LCD foreground layer as the current layer */
+//  LCD_SetLayer(LCD_FOREGROUND_LAYER);
+//	
+//	LCD_Clear(LCD_COLOR_WHITE);
+//	memcpy ( (void *)(LCD_FRAME_BUFFER + BUFFER_OFFSET), (void *) &Image, sizeof(Image));
+//		
 	osDelay(250);
 	CC2500_SPI_INIT();
 	osDelay(250);
