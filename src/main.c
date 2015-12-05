@@ -17,6 +17,7 @@
 #include "stm32f429i_discovery_lcd.h"
 #include "stm32f429i_discovery_l3gd20.h"
 #include "recv_data.h"
+#include "display.h"
 
 static void delay(__IO uint32_t nCount)
 {
@@ -60,14 +61,19 @@ int main (void) {
   LCD_SetLayer(LCD_FOREGROUND_LAYER);
 	
 	LCD_Clear(LCD_COLOR_WHITE);
-	memcpy ( (void *)(LCD_FRAME_BUFFER + BUFFER_OFFSET), (void *) &Image, sizeof(Image));
+	//memcpy ( (void *)(LCD_FRAME_BUFFER + BUFFER_OFFSET), (void *) &Image, sizeof(Image));
 		
-	osDelay(250);
-	CC2500_SPI_INIT();
-	osDelay(250);
-//	CC2500_INT_INIT();
 //	osDelay(250);
-	test_wireless();
+//	CC2500_SPI_INIT();
+//	osDelay(250);
+////	CC2500_INT_INIT();
+////	osDelay(250);
+//	test_wireless();
+//	
+	
+	display_test();
+	
+	
 	//recv_data_thread = osThreadCreate(osThread(recv_data), NULL);
 	//draw_pos_thread = osThreadCreate(osThread(draw_pos), NULL);
 	//my_example_thread = osThreadCreate(osThread(my_example), NULL);
