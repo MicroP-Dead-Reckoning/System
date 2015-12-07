@@ -40,9 +40,9 @@ osThreadId transmit_data_thread;
 int main (void) {
   osKernelInitialize ();                    // initialize CMSIS-RTOS
 	
-	osDelay(250);
+	osDelay(1000);
 	CC2500_SPI_INIT();
-	osDelay(250);
+	osDelay(1000);
 	
 	
 	transmit_data_thread = osThreadCreate(osThread(transmit_data), NULL);

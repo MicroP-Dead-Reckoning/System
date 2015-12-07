@@ -9,9 +9,12 @@ void test_wireless(void){
 	printf("result = %x, %x, %x\n", res2[0], res2[1], res2[2]);
 
 	CC2500_INT_INIT();
-	for (int i=0; i<168000000/6; i++);
+	for (int i=0; i<168000000; i++);
 	
-	while(1);
+	while(1){
+		int x = 0;
+		x = 5;
+	}
 	
 }	
 
